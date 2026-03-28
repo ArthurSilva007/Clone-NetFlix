@@ -1,4 +1,4 @@
-import { categories } from './data.js';
+import { getCategoriasPorPerfil } from './data.js';
 import { createCarousel } from './components/Carousel.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const container = document.getElementById('main-content');
     
-    if (container) {
+    if (container && nomePerfil) {
+        const categories = getCategoriasPorPerfil(nomePerfil);
         categories.forEach(category => {
             const carousel = createCarousel(category);
             container.appendChild(carousel);

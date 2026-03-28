@@ -1,67 +1,79 @@
 # Clone-NetFlix
 
-Projeto de estudo front-end inspirado na tela de seleção de perfis da Netflix, em português, com foco em layout, tipografia, hover e composição visual para exportação em alta resolução.
+Projeto front-end inspirado na Netflix com duas experiências principais:
 
-## Resumo do que foi feito
+- Tela de seleção de perfis
+- Página de catálogo com carrosséis dinâmicos e preview de vídeo
 
-- Estrutura da tela de seleção de perfis com 4 usuários:
-  - Gustavo
-  - Bianca
-  - Arthur
-  - Souza
-- Ajustes de layout para padrão Netflix:
-  - Conteúdo centralizado
-  - Fundo escuro com gradiente vermelho
-  - Organização horizontal dos perfis
-- Ajustes visuais dos cards:
-  - Imagens com bordas arredondadas
-  - Nome centralizado abaixo da imagem
-  - Efeito de hover aplicado somente na imagem (nome estático)
-- Tipografia do título refinada para aparência premium
-- Logotipo NETFLIX no topo, centralizado, em vermelho
-- Remoção do botão de tema no layout final da tela principal (composição limpa)
-- Correção de caminhos das imagens para renderização local em captura headless
-- Geração de imagem final em alta resolução (4K)
+## Funcionalidades atuais
 
-## Arquivos do projeto
+- Seleção de perfis com visual Netflix (4 perfis)
+- Layout centralizado e responsivo na tela inicial
+- Efeito hover aplicado apenas nas imagens de perfil
+- Tipografia e identidade visual refinadas (fundo escuro com gradiente vermelho)
+- Catálogo dinâmico renderizado via JavaScript por categorias
+- Cards com:
+  - Hover expandido
+  - Badge de classificação/idade
+  - Match score aleatório
+  - Duração dinâmica
+  - Barra de progresso (quando aplicável)
+  - Reprodução de trailer no hover via YouTube embed
+- Nome e avatar do perfil carregados do localStorage no catálogo
+- Navbar e footer com links apontando para o GitHub do projeto
+- Captura 4K da tela inicial para apresentação
 
-- index.html: marcação principal da tela de perfis
-- style.css: estilos e responsividade da interface
-- assets/: imagens dos perfis e fontes locais
-- theme-toggle.js: script de alternância de tema criado durante o processo (não conectado na versão final da tela limpa)
-- netflix-perfis-4k.png: arte final exportada em 3840x2160
+## Estrutura do projeto
 
-## Ferramentas e tecnologias usadas
+- index.html: tela inicial de perfis
+- style.css: estilos da tela inicial
+- assets/: imagens e exports (incluindo screenshots)
+- catalogo/catalogo.html: estrutura da página de catálogo
+- catalogo/catalogo.css: estilos da página de catálogo
+- catalogo/js/main.js: inicialização da página e injeção dos carrosséis
+- catalogo/js/data.js: fonte de dados das categorias e mídias
+- catalogo/js/utils.js: utilitários de vídeo, score, duração e badge
+- catalogo/js/components/Card.js: criação e comportamento dos cards
+- catalogo/js/components/Carousel.js: criação das seções de carrossel
+
+## Utilitários implementados
+
+No arquivo catalogo/js/utils.js:
+
+- getYouTubeId(url): extrai o ID do vídeo para embed
+- getRandomMatchScore(): gera porcentagem de relevância entre 80 e 99
+- getRandomDuration(hasProgress): gera duração dinâmica por contexto
+- getRandomAgeBadge(): gera selo etário com variação visual
+
+## Tecnologias
 
 - HTML5
 - CSS3
-- JavaScript
-- PowerShell (execução local)
+- JavaScript (ES Modules)
+- Font Awesome
+- Google Fonts
 - Git e GitHub
-- Playwright CLI (captura de screenshot em alta resolução)
-- VS Code + GitHub Copilot
+- Playwright CLI (captura de screenshot)
+- VS Code
 
-## Comandos usados para exportação da imagem
+## Como executar
 
-- Instalação do navegador do Playwright:
-  - npx --yes playwright install chromium
-- Captura final 4K:
-  - npx --yes playwright screenshot --wait-for-timeout=2200 --device="Desktop Chrome" --viewport-size="3840,2160" "file:///d:/NETFLIX/index.html" "d:\NETFLIX\netflix-perfis-4k.png"
+1. Abra o projeto no VS Code.
+2. Inicie um servidor local (ex.: Five Server) ou abra os arquivos HTML.
+3. Acesse:
+   - index.html (seleção de perfis)
+   - catalogo/catalogo.html (catálogo)
 
-## Histórico objetivo de implementação
+## Exportação de screenshot (4K)
 
-1. Construção e refino da tela de perfis
-2. Ajustes de responsividade e alinhamento
-3. Correções de hover para afetar apenas imagem
-4. Implementação e depois remoção visual do toggle de tema na tela final
-5. Inclusão do logotipo NETFLIX e limpeza de elementos extras
-6. Correção de caminhos de imagens para render headless
-7. Geração da versão final em 4K
+Instalar navegador do Playwright:
 
-## Repositório remoto
+- npx --yes playwright install chromium
 
-- URL: https://github.com/ArthurSilva007/Clone-NetFlix.git
+Capturar imagem 4K da tela inicial:
 
-## Observação
+- npx --yes playwright screenshot --wait-for-timeout=2200 --device="Desktop Chrome" --viewport-size="3840,2160" "file:///d:/NETFLIX/index.html" "d:\NETFLIX\assets\netflix-perfis-4k.png"
 
-O projeto está pronto para continuidade com novas telas (home, player, cadastro e autenticação), mantendo a mesma base visual.
+## Repositório
+
+- GitHub: https://github.com/ArthurSilva007/Clone-NetFlix.git
